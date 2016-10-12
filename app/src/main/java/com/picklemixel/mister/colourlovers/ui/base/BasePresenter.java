@@ -2,6 +2,7 @@ package com.picklemixel.mister.colourlovers.ui.base;
 
 public abstract class BasePresenter implements IBasePresenter{
 
+    public static final int NO_ERROR = 0;
     private boolean isDataReady;
     private boolean isViewReady;
     private int lastError;

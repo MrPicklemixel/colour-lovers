@@ -1,5 +1,6 @@
 package com.picklemixel.mister.colourlovers.ui.explore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import com.picklemixel.mister.colourlovers.R;
 import com.picklemixel.mister.colourlovers.model.Palette;
 import com.picklemixel.mister.colourlovers.ui.base.BaseFragment;
+import com.picklemixel.mister.colourlovers.ui.view.ViewPaletteActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -74,13 +76,15 @@ public class PalettesListFragment extends BaseFragment implements IPalettesListV
     }
 
     @Override
-    public void onListItemClicked(int id) {
-        presenter.OnListItemClicked(id);
+    public void populateList(Palette[] data) {
+        adapter = new PaletteListAdapter(getContext(), presenter, data);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
-    public void populateList(Palette[] data) {
-        adapter = new PaletteListAdapter(getContext(), data);
-        recyclerView.setAdapter(adapter);
+    public void openViewPaletteActivity(int paletteId) {
+        Intent intent = new Intent(getActivity(), ViewPaletteActivity.class);
+        intent.putExtra(Palette.EXTRA_PALETTE_ID, paletteId);
+        startActivity(intent);
     }
 }

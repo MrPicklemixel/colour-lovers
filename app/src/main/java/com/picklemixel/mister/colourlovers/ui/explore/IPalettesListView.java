@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Masterfully pieced together by the Al-Mighty Paul on 16/06/16.
  */
-public interface IPalettesListView extends IBaseView {
-    void onListItemClicked(int id);
+interface IPalettesListView extends IBaseView {
     void populateList(Palette[] data);
+    void openViewPaletteActivity(int paletteId);
 }

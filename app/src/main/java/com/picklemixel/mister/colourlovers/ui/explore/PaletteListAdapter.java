@@ -13,15 +13,17 @@ import com.picklemixel.mister.colourlovers.viewholder.PaletteViewHolder;
 /**
  * Masterfully pieced together by the Al-Mighty Paul on 16/06/16.
  */
-public class PaletteListAdapter extends RecyclerView.Adapter<PaletteViewHolder> {
+class PaletteListAdapter extends RecyclerView.Adapter<PaletteViewHolder> {
 
-    Context context;
-    Palette[] data;
-    LayoutInflater inflater;
+    private IPalettesListPresenter presenter;
+    private Context context;
+    private Palette[] palettes;
+    private LayoutInflater inflater;
 
-    public PaletteListAdapter(Context context, Palette[] data) {
+    PaletteListAdapter(Context context, IPalettesListPresenter presenter, Palette[] palettes) {
         this.context = context;
-        this.data = data;
+        this.presenter = presenter;
+        this.palettes = palettes;
         inflater = LayoutInflater.from(context);
     }
 
@@ -29,7 +31,7 @@ public class PaletteListAdapter extends RecyclerView.Adapter<PaletteViewHolder> 
     public PaletteViewHolder onCreateViewHolder(ViewGroup parent, int position) {
         View view = inflater.inflate(R.layout.palette_list_item, parent, false);
 
-        PaletteViewHolder holder = new PaletteViewHolder(view, context, data);
+        PaletteViewHolder holder = new PaletteViewHolder(view, context, palettes);
 
         return holder;
     }
@@ -37,14 +39,20 @@ public class PaletteListAdapter extends RecyclerView.Adapter<PaletteViewHolder> 
     @Override
     public void onBindViewHolder(PaletteViewHolder holder, int position) {
         holder.resetView();
-        Palette palette = data[position];
+        final Palette palette = palettes[position];
         holder.setPaletteText(palette);
         holder.createPaletteColours(palette);
+        holder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.OnListItemClicked(palette.getId());
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return palettes.length;
     }
 
 }

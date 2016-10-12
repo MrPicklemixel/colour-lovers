@@ -11,6 +11,8 @@ import java.util.ArrayList;
  */
 public class Palette {
 
+    public static final String EXTRA_PALETTE_ID = "palette_id";
+
     private int id;
     private String title;
     private String userName;

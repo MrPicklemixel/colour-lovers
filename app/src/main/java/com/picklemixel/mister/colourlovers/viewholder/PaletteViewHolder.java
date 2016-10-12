@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.picklemixel.mister.colourlovers.R;
 import com.picklemixel.mister.colourlovers.model.Palette;
@@ -52,8 +51,6 @@ public class PaletteViewHolder extends RecyclerView.ViewHolder {
     @OnClick(R.id.main)
     public void onPaletteClicked() {
         Palette palette = palettes[getAdapterPosition()];
-//        ((PalettesListFragment) context).onListItemClicked(palette.getId());
-        Toast.makeText(context, "" + palette.getTitle(), Toast.LENGTH_SHORT).show();
     }
 
     public void resetView() {
@@ -79,5 +76,9 @@ public class PaletteViewHolder extends RecyclerView.ViewHolder {
             layout.setLayoutParams(LLParams);
             mainLayout.addView(layout);
         }
+    }
+
+    public void setOnClickListener(View.OnClickListener onClickListener) {
+        mainLayout.setOnClickListener(onClickListener);
     }
 }
