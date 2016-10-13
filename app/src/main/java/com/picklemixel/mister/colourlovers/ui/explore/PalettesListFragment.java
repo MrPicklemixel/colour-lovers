@@ -1,5 +1,6 @@
 package com.picklemixel.mister.colourlovers.ui.explore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import com.picklemixel.mister.colourlovers.R;
 import com.picklemixel.mister.colourlovers.model.Palette;
 import com.picklemixel.mister.colourlovers.ui.base.BaseFragment;
+import com.picklemixel.mister.colourlovers.ui.view.ViewPaletteActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +20,7 @@ import butterknife.ButterKnife;
 public class PalettesListFragment extends BaseFragment implements IPalettesListView {
 
     @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    RecyclerView recyclerViewPalettes;
 
     IPalettesListPresenter presenter;
     PaletteListAdapter adapter;
@@ -57,7 +59,7 @@ public class PalettesListFragment extends BaseFragment implements IPalettesListV
         View view = inflater.inflate(R.layout.fragment_palette_list, container, false);
         ButterKnife.bind(this, view);
         super.initialiseBaseFragment(view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewPalettes.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
 
@@ -74,13 +76,15 @@ public class PalettesListFragment extends BaseFragment implements IPalettesListV
     }
 
     @Override
-    public void onListItemClicked(int id) {
-        presenter.OnListItemClicked(id);
+    public void populateList(Palette[] data) {
+        adapter = new PaletteListAdapter(getContext(), presenter, data);
+        recyclerViewPalettes.setAdapter(adapter);
     }
 
     @Override
-    public void populateList(Palette[] data) {
-        adapter = new PaletteListAdapter(getContext(), data);
-        recyclerView.setAdapter(adapter);
+    public void openViewPaletteActivity(int paletteId) {
+        Intent intent = new Intent(getActivity(), ViewPaletteActivity.class);
+        intent.putExtra(Palette.EXTRA_PALETTE_ID, paletteId);
+        startActivity(intent);
     }
 }

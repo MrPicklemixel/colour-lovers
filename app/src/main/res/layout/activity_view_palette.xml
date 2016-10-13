@@ -1,13 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_view_palette"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.picklemixel.mister.colourlovers.ui.view.ViewPaletteActivity">
+    android:layout_height="match_parent">
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/recycler_view">
+
+            <RelativeLayout
+                android:id="@+id/counter_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_small"
+                android:paddingTop="@dimen/margin_small">
+
+                <ImageView
+                    android:id="@+id/image_views"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_regular"
+                    android:src="@mipmap/ic_search_white_18dp"
+                    android:tint="@color/text_primary_light" />
+
+                <TextView
+                    android:id="@+id/text_view_views"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_toRightOf="@id/image_views"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/text_primary_light" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <ImageView
+                        android:id="@+id/image_comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_mode_comment_white_18dp"
+                        android:tint="@color/text_primary_light" />
+
+                    <TextView
+                        android:id="@+id/text_view_comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_tiny"
+                        android:layout_toRightOf="@+id/image_comments"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_primary_light" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/image_loves"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_regular"
+                    android:layout_toLeftOf="@+id/text_view_loves"
+                    android:src="@mipmap/ic_favorite_white_18dp"
+                    android:tint="@color/text_primary_light" />
+
+                <TextView
+                    android:id="@+id/text_view_loves"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_regular"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/text_primary_light" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_view_username_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/counter_bar"
+                android:layout_marginLeft="@dimen/margin_regular"
+                android:layout_marginRight="@dimen/margin_regular"
+                android:overScrollMode="ifContentScrolls"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/text_primary_light" />
+
+            <TextView
+                android:id="@+id/text_view_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/text_view_username_date"
+                android:layout_marginBottom="@dimen/margin_tiny"
+                android:layout_marginLeft="@dimen/margin_regular"
+                android:layout_marginRight="@dimen/margin_regular"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/text_primary_light" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:indeterminate="true" />
+
+
+    </RelativeLayout>
+</ScrollView>

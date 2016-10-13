@@ -4,64 +4,63 @@
     android:layout_height="160dp">
 
     <LinearLayout
-        android:id="@+id/main"
-        android:orientation="horizontal"
+        android:id="@+id/root_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="horizontal"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/main"
+        android:layout_alignTop="@id/root_layout"
         android:background="@color/white"
-        android:paddingTop="@dimen/margin_small"
-        android:paddingBottom="@dimen/margin_small">
+        android:paddingBottom="@dimen/margin_small"
+        android:paddingTop="@dimen/margin_small">
 
         <TextView
+            android:id="@+id/text_view_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/margin_regular"
-            android:textColor="@color/text_primary"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/title" />
+            android:textColor="@color/text_primary" />
 
         <TextView
+            android:id="@+id/text_view_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="@dimen/margin_regular"
-            android:textColor="@color/text_primary"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:gravity="right"
-            android:id="@+id/username" />
+            android:paddingRight="@dimen/margin_regular"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/text_primary" />
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/main"
+        android:layout_alignBottom="@id/root_layout"
         android:background="@color/white_transparent"
-        android:paddingTop="@dimen/margin_small"
+        android:orientation="horizontal"
         android:paddingBottom="@dimen/margin_small"
-        android:orientation="horizontal">
+        android:paddingTop="@dimen/margin_small">
 
         <ImageView
             android:id="@+id/image_views"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:tint="@color/text_primary_light"
             android:layout_marginLeft="@dimen/margin_regular"
-            android:src="@mipmap/ic_search_white_18dp"/>
+            android:src="@mipmap/ic_search_white_18dp"
+            android:tint="@color/text_primary_light" />
 
         <TextView
             android:id="@+id/text_view_views"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_tiny"
             android:layout_toRightOf="@id/image_views"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text_primary_light"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/text_primary_light" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -72,9 +71,9 @@
                 android:id="@+id/image_comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:tint="@color/text_primary_light"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_mode_comment_white_18dp"/>
+                android:src="@mipmap/ic_mode_comment_white_18dp"
+                android:tint="@color/text_primary_light" />
 
             <TextView
                 android:id="@+id/text_view_comments"
@@ -82,28 +81,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_tiny"
                 android:layout_toRightOf="@+id/image_comments"
-                android:textColor="@color/text_primary_light"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/text_primary_light" />
         </RelativeLayout>
 
         <ImageView
             android:id="@+id/image_loves"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/text_view_loves"
-            android:tint="@color/text_primary_light"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_regular"
-            android:src="@mipmap/ic_favorite_white_18dp"/>
+            android:layout_toLeftOf="@+id/text_view_loves"
+            android:src="@mipmap/ic_favorite_white_18dp"
+            android:tint="@color/text_primary_light" />
 
         <TextView
             android:id="@+id/text_view_loves"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_marginLeft="@dimen/margin_tiny"
             android:layout_marginRight="@dimen/margin_regular"
-            android:textColor="@color/text_primary_light"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_alignParentEnd="true" />
+            android:textColor="@color/text_primary_light" />
     </RelativeLayout>
 </RelativeLayout>
