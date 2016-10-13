@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 public class PalettesListFragment extends BaseFragment implements IPalettesListView {
 
     @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    RecyclerView recyclerViewPalettes;
 
     IPalettesListPresenter presenter;
     PaletteListAdapter adapter;
@@ -59,7 +59,7 @@ public class PalettesListFragment extends BaseFragment implements IPalettesListV
         View view = inflater.inflate(R.layout.fragment_palette_list, container, false);
         ButterKnife.bind(this, view);
         super.initialiseBaseFragment(view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewPalettes.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
 
@@ -78,7 +78,7 @@ public class PalettesListFragment extends BaseFragment implements IPalettesListV
     @Override
     public void populateList(Palette[] data) {
         adapter = new PaletteListAdapter(getContext(), presenter, data);
-        recyclerView.setAdapter(adapter);
+        recyclerViewPalettes.setAdapter(adapter);
     }
 
     @Override

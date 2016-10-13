@@ -20,23 +20,23 @@ import butterknife.OnClick;
 
 public class PaletteViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.main)
+    @BindView(R.id.root_layout)
     LinearLayout mainLayout;
 
-    @BindView(R.id.title)
-    TextView title;
+    @BindView(R.id.text_view_title)
+    TextView textViewTitle;
 
-    @BindView(R.id.username)
-    TextView username;
+    @BindView(R.id.text_view_username)
+    TextView textViewUsername;
 
     @BindView(R.id.text_view_views)
-    TextView views;
+    TextView textViewViewCount;
 
     @BindView(R.id.text_view_comments)
-    TextView comments;
+    TextView textViewCommentsCount;
 
     @BindView(R.id.text_view_loves)
-    TextView loves;
+    TextView textViewLovesCount;
 
     private Context context;
     private Palette[] palettes;
@@ -48,7 +48,7 @@ public class PaletteViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    @OnClick(R.id.main)
+    @OnClick(R.id.root_layout)
     public void onPaletteClicked() {
         Palette palette = palettes[getAdapterPosition()];
     }
@@ -58,11 +58,11 @@ public class PaletteViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setPaletteText(Palette palette) {
-        title.setText(palette.getTitle());
-        username.setText(palette.getUserName());
-        views.setText(String.valueOf(palette.getNumViews()));
-        comments.setText(String.valueOf(palette.getNumComments()));
-        loves.setText(String.valueOf(palette.getNumHearts()));
+        textViewTitle.setText(palette.getTitle());
+        textViewUsername.setText(palette.getUserName());
+        textViewViewCount.setText(String.valueOf(palette.getNumViews()));
+        textViewCommentsCount.setText(String.valueOf(palette.getNumComments()));
+        textViewLovesCount.setText(String.valueOf(palette.getNumHearts()));
     }
 
     public void createPaletteColours(Palette palette) {
